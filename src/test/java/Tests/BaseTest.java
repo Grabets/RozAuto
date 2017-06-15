@@ -4,11 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 
 /**
  * Created by bogdan on 6/8/2017.
  */
-public class BaseTest {
+public class BaseTest{
     private WebDriver driver;
 
     @BeforeClass
@@ -19,7 +20,8 @@ public class BaseTest {
     }
 
     @AfterTest
-    public void closeDriver(){
+    public void closeDriver() throws Exception{
+        Thread.sleep(2000);
         getDriver().close();
     }
 

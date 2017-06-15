@@ -1,8 +1,8 @@
 package Tests;
 
 import UI.HomePage;
+import UI.SearchBox;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
 /**
@@ -13,10 +13,17 @@ public class SandBox extends BaseTest {
     @Test
     public void SandBoxTest(){
         WebDriver driver = super.getDriver();
-        HomePage homePage = HomePage.open(driver);
-        PageFactory.initElements(driver, homePage);
-        homePage.setSearchBox("ADS");
+        HomePage homePage = HomePage.init(driver);
     }
 
+    @Test
+    public void SearchBoxTest() {
+        WebDriver driver = super.getDriver();
+        HomePage homePage = HomePage.init(driver);
+        SearchBox searchBox = homePage.getSearchBox();
+        //searchBox.setSearchForm("алезан");
+        searchBox.chooseCategory("Компьютеры и ноутбуки");
+        //searchBox.clickSearchButton();
+    }
 
 }
