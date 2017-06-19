@@ -1,20 +1,18 @@
 package UI;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-
 
 /**
  * Created by bogdan on 6/8/2017.
  */
 public class HomePage {
 
-    @FindBy(how = How.NAME, using = "rz-header-search")
     private SearchBox searchBox;
+    static WebDriver driver;
 
-    public static HomePage init(WebDriver driver){
+    public static HomePage init(WebDriver driverArg){
+        driver = driverArg;
         HomePage homePage = new HomePage();
         PageFactory.initElements(driver, homePage);
         driver.manage().window().maximize();
@@ -23,6 +21,14 @@ public class HomePage {
     }
 
     public SearchBox getSearchBox() {
+        searchBox = PageFactory.initElements(driver, SearchBox.class);
         return searchBox;
+    }
+
+    public ResultsPage search(String text){
+        searchBox = getSearchBox();
+        searchBox.setSearchForm(text);
+        searchBox.clickSearchButton();
+        return new ResultsPage(driver);
     }
 }
