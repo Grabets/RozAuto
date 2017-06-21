@@ -14,7 +14,7 @@ public class HomePage {
     public static HomePage init(WebDriver driverArg){
         driver = driverArg;
         HomePage homePage = new HomePage();
-        PageFactory.initElements(driver, homePage);
+        //PageFactory.initElements(driver, homePage);
         driver.manage().window().maximize();
         driver.navigate().to("http://rozetka.com.ua");
         return new HomePage();

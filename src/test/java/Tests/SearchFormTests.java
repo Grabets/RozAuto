@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 /**
  * Created by bogdan on 6/15/2017.
  */
-public class SearchFormTest extends BaseTest {
+public class SearchFormTests extends BaseTest {
     WebDriver driver;
     HomePage homePage;
     SearchBox searchBox;
