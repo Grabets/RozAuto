@@ -18,21 +18,23 @@ public class ResultsPageTests extends BaseTest {
     @BeforeMethod
     public void beforeMethod(){
         driver = super.getDriver();
-        this.resultsPage = ResultsPage.init(driver, "iphone 7");
-    }
-
-    private void setResultsPage(String textToSet){
-        this.resultsPage = ResultsPage.init(driver, textToSet);
-    }
-
-    @Test
-    public void openPageTest(){
-        setResultsPage("xiaomi redmi 4 prime");
-        Assert.assertTrue(resultsPage.isOpened());
+        HomePage homePage = HomePage.init(driver);
+        resultsPage = homePage.search("iphone 7");
     }
 
     @Test
     public void checkResultPageTest(){
         Assert.assertTrue(resultsPage.isOpened());
     }
+
+    @Test
+    public void checkTitle(){
+        Assert.assertEquals("iphone 7", resultsPage.getTextTitle());
+    }
+
+    @Test
+    public void checkCorrectGoodsInList(){
+        Assert.assertTrue(resultsPage.checkNameofGoods());
+    }
+
 }

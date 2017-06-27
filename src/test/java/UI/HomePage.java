@@ -27,8 +27,9 @@ public class HomePage {
 
     public ResultsPage search(String text){
         searchBox = getSearchBox();
-        searchBox.setSearchForm(text);
-        searchBox.clickSearchButton();
-        return new ResultsPage(driver);
+        searchBox.setAndSubmitSearchForm(text);
+        ResultsPage resultsPage = PageFactory.initElements(driver, ResultsPage.class);
+        ResultsPage.setDriver(driver);
+        return resultsPage;
     }
 }
