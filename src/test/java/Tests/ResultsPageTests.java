@@ -1,5 +1,6 @@
 package Tests;
 
+import Core.SortTypes;
 import UI.HomePage;
 import UI.ResultsPage;
 import UI.SearchBox;
@@ -14,12 +15,14 @@ import org.testng.annotations.Test;
 public class ResultsPageTests extends BaseTest {
     WebDriver driver;
     ResultsPage resultsPage;
+    String searchTerm;
 
     @BeforeMethod
     public void beforeMethod(){
         driver = super.getDriver();
         HomePage homePage = HomePage.init(driver);
-        resultsPage = homePage.search("iphone 7");
+        searchTerm = "iphone 7";
+        resultsPage = homePage.search(searchTerm);
     }
 
     @Test
@@ -29,12 +32,18 @@ public class ResultsPageTests extends BaseTest {
 
     @Test
     public void checkTitle(){
-        Assert.assertEquals("iphone 7", resultsPage.getTextTitle());
+        Assert.assertEquals(searchTerm, resultsPage.getTextTitle());
     }
 
     @Test
-    public void checkCorrectGoodsInList(){
-        Assert.assertTrue(resultsPage.checkNameofGoods());
+    public void checkCorrectNameOfGoodsInList(){
+        Assert.assertTrue(resultsPage.checkAllGoodsContainText(searchTerm));
+    }
+
+    @Test
+    public void checkSortPriceFromLowerToBigger () {
+        SortTypes sortTypes = SortTypes.PRICE_FROM_BIGGER_TO_LOWER;
+        Assert.assertTrue(resultsPage.isSortingOfPrice(sortTypes));
     }
 
 }
