@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
@@ -24,6 +25,19 @@ public class SearchFormTests extends BaseTest {
         this.homePage = HomePage.init(driver);
         this.searchBox = homePage.getSearchBox();
         this.resultsPage = PageFactory.initElements(driver, ResultsPage.class);
+    }
+
+    @DataProvider(name = "CategoryList")
+    public static Object[][] credentials() {
+
+        return new Object[][] { { "Программное обеспечение", "Программное обеспечение" }, { "Телефоны, MP3, GPS", "Телефоны, MP3, GPS" },
+                {"Дом, сад, огород, оборудование","Дом, сад, огород, оборудование"}, {"Компьютеры и ноутбуки","Компьютеры и ноутбуки"}};
+    }
+
+    @Test(dataProvider = "CategoryList")
+     public void chosingCategoryTest(String chosingName, String choosedName) {
+        searchBox.chooseCategory(chosingName);
+        Assert.assertEquals(searchBox.getCategory(),choosedName);
     }
 
     @Test
@@ -76,4 +90,6 @@ public class SearchFormTests extends BaseTest {
         Assert.assertTrue(searchBox.checkQuickSearchResult(textSearch1,driver));
         //Maybe we need to check goods and items with different methods?
     }
+
+
 }
