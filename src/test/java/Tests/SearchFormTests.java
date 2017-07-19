@@ -1,5 +1,7 @@
 package Tests;
 
+import Core.CreateObjectsFromFile;
+import Core.ReadFromFile;
 import UI.HomePage;
 import UI.ResultsPage;
 import UI.SearchBox;
@@ -35,7 +37,19 @@ public class SearchFormTests extends BaseTest {
     }
 
     @Test(dataProvider = "CategoryList")
-     public void chosingCategoryTest(String chosingName, String choosedName) {
+     public void choosingCategoryTest(String chosingName, String choosedName) {
+        searchBox.chooseCategory(chosingName);
+        Assert.assertEquals(searchBox.getCategory(),choosedName);
+    }
+
+    @DataProvider(name = "ValueFromFile")
+    public static Object[][] valueFromFile() {
+        String filePathName = "src\\main\\resources\\data.txt";
+        return CreateObjectsFromFile.createObjectFromFile(filePathName);
+    }
+
+    @Test(dataProvider = "ValueFromFile")
+    public void choosingCategoryFromFileTest(String chosingName, String choosedName) {
         searchBox.chooseCategory(chosingName);
         Assert.assertEquals(searchBox.getCategory(),choosedName);
     }

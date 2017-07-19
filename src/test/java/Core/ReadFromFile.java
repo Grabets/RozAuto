@@ -24,12 +24,4 @@ public class ReadFromFile {
         }
         return list;
     }
-
-    @Test
-    public void ReadFileTest(){
-        String fileName = "src\\main\\resources\\data.txt";
-        ReadFromFile readFromFile = new ReadFromFile();
-        readFromFile.readFromFile(fileName);
-
- }
 }
