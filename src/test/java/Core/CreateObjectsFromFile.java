@@ -10,13 +10,14 @@ import java.util.List;
  */
 public class CreateObjectsFromFile {
 
-    public static Object[][] createObjectFromFile(String filePathName){
+    public static Object[][] build(String filePathName){
         ReadFromFile reader = new ReadFromFile();
         List<String> list = reader.readFromFile(filePathName);
-        Parser parser = new Parser();
+
         Object[][] arrayOfObject = new Object[list.size()][];
         for (int i =0; i<list.size(); i++) {
-            arrayOfObject[i] = parser.parse(list.get(i));
+            Parser parser = new Parser(list.get(i));
+            arrayOfObject[i] = new Object[]{parser};
         }
         return arrayOfObject;
     }
@@ -24,6 +25,6 @@ public class CreateObjectsFromFile {
     @Test
     public void test(){
         String filePathName = "src\\main\\resources\\data.txt";
-        System.out.println(Arrays.toString(createObjectFromFile(filePathName)));
+        System.out.println(Arrays.toString(build(filePathName)));
     }
 }
