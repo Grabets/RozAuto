@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 /**
  * Created by bogdan on 6/19/2017.
  */
-public class ResultsPageTests extends BaseTest {
+public class ResultsPageTest extends BaseTest {
     WebDriver driver;
     ResultsPage resultsPage;
     String searchTerm;
