@@ -1,8 +1,6 @@
 package Tests;
 
-import Core.CreateObjectsFromFile;
 import Core.Parser;
-import Core.ReadFromFile;
 import Core.SearchFormDataProvider;
 import UI.HomePage;
 import UI.ResultsPage;

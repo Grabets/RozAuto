@@ -1,12 +1,13 @@
 package UI;
 
+import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by bogdan on 6/8/2017.
  */
-public class HomePage {
+public class HomePage extends PageObject {
 
     private SearchBox searchBox;
     static WebDriver driver;
@@ -24,6 +25,7 @@ public class HomePage {
         searchBox = PageFactory.initElements(driver, SearchBox.class);
         return searchBox;
     }
+
 
     public ResultsPage search(String text){
         searchBox = getSearchBox();

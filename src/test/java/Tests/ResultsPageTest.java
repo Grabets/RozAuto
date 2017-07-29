@@ -3,7 +3,6 @@ package Tests;
 import Core.SortTypes;
 import UI.HomePage;
 import UI.ResultsPage;
-import UI.SearchBox;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
