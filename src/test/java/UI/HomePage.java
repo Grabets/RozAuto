@@ -1,6 +1,7 @@
 package UI;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 
 /**
@@ -18,6 +19,12 @@ public class HomePage {
         driver.manage().window().maximize();
         driver.navigate().to("http://rozetka.com.ua");
         return new HomePage();
+    }
+
+    public HomePage open (){
+        System.setProperty("webdriver.chrome.driver","C:\\Program Files (x86)\\Google\\Chrome\\chromedriver.exe");
+        driver = new ChromeDriver();
+        return HomePage.init(driver);
     }
 
     public SearchBox getSearchBox() {
