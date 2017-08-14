@@ -29,24 +29,12 @@ public class CheckSearchFormOnHomePage extends JUnitStory {
 
     @Override
     public Configuration configuration(){
-        URL storyURL=null;
-        try {
-            storyURL=new URL("file://" + System.getProperty("user.dir") + "/src/main/resources/stories/home_page/");
-            System.out.println(storyURL.toString());
-        }
-        catch (  MalformedURLException e) {
-            e.printStackTrace();
-        }
 
         return new MostUsefulConfiguration()
-                .useStoryLoader(new LoadFromRelativeFile(storyURL))
-                .useStoryReporterBuilder(new StoryReporterBuilder().withFormats(Format.HTML));
-
-        /*return new MostUsefulConfiguration()
                 // where to find the stories
-                .useStoryLoader(new LoadFromRelativeFile(storyURL))
+                .useStoryLoader(new LoadFromClasspath(this.getClass()))
                 // CONSOLE and TXT reporting
-                .useStoryReporterBuilder(new StoryReporterBuilder().withDefaultFormats().withFormats(Format.CONSOLE, Format.TXT));*/
+                .useStoryReporterBuilder(new StoryReporterBuilder().withDefaultFormats().withFormats(Format.CONSOLE, Format.TXT));
     }
 
     // Here we specify the steps classes

@@ -39,4 +39,8 @@ public class HomePage {
         ResultsPage.setDriver(driver);
         return resultsPage;
     }
+
+    public void close (){
+        driver.close();
+    }
 }

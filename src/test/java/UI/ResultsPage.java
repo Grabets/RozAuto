@@ -58,7 +58,6 @@ public class ResultsPage {
         String nameOfGoodsCssSelector = ".g-i-tile-i-title.clearfix > a";
         for (WebElement webElement : searchResult) {
             String nameOfGoods = webElement.findElement(By.cssSelector(nameOfGoodsCssSelector)).getText();
-            //System.out.println(nameOfGoods);
             if (!nameOfGoods.toLowerCase().contains(testTerm))
                 return false;
         }
@@ -87,12 +86,7 @@ public class ResultsPage {
         return listOfPrice;
     }
 
-    /*private Boolean isPriceListSorted (List<Integer> listOfPrice){
-        return Ordering.natural().isOrdered(listOfPrice);
-    }*/
-
     private Boolean isPriceListSorted (List<Integer> listOfPrice, SortTypes types){
-        System.out.println(listOfPrice.toString());
     if (types.equals(SortTypes.PRICE_FROM_LOWER_TO_BIGGER))
         return Ordering.natural().isOrdered(listOfPrice);
     else

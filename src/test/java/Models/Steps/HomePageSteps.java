@@ -19,4 +19,8 @@ public class HomePageSteps {
     public void checkResultPage(String text){
         Assert.assertEquals(text, resultsPage.getTextTitle());
     }
+
+    public void close() {
+        homePage.close();
+    }
 }

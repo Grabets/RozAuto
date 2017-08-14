@@ -7,5 +7,5 @@ So that I can achieve opening page with searching result which include list of g
 
 Scenario: looking up to search items
 Given the user is on the rozetka home page
-When the user looks up the item 'macbook'
-Then they should see search result page with correct items title 'macbook'
+When the user looks up the item 'xiaomi'
+Then they should see search result page with correct items title 'xiaomi'
